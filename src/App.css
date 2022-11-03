@@ -2,10 +2,12 @@
 
 .sidebar {
   box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
+  width: 16rem;
 }
 .nav-item,
 .navbar {
   z-index: 10000;
+
 }
 @media  screen and (max-width:800px) {
   .sidebar{
@@ -21,7 +23,7 @@
   width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(216, 216, 216);
+  background-color: #aaa;
   border-radius: 40px;
 }
 ::-webkit-scrollbar-track {

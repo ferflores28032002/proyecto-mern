@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { Dashboard, Inventario, Categorias, Empleados, Stacked, Pyramid, Usuarios, Proveedores, Password, Roles, Permisos, Cargos, Financial, Informacion, ColorMapping, Ventas } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
+        <div className="flex relative dark:bg-main-dark-bg ">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent
               content="Settings"
@@ -65,25 +65,25 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={(<Ecommerce />)} />
-                <Route path="/ecommerce" element={(<Ecommerce />)} />
+                <Route path="/" element={(<Dashboard />)} />
+                <Route path="/Dashboard" element={(<Dashboard />)} />
 
                 {/* pages  */}
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/employees" element={<Employees />} />
-                <Route path="/customers" element={<Customers />} />
+                <Route path="/Inventario" element={<Inventario />} />
+                <Route path="/empleados" element={<Empleados />} />
+                <Route path="/usuarios" element={<Usuarios />} />
 
                 {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} />
+                <Route path="/Proveedores" element={<Proveedores />} />
+                <Route path="/Ventas" element={<Ventas />} />
+                <Route path="/Categorias" element={<Categorias />} />
+                <Route path="/Informacion" element={<Informacion />} />
 
                 {/* charts  */}
-                <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
+                <Route path="/Password" element={<Password />} />
+                <Route path="/Roles" element={<Roles />} />
+                <Route path="/Permisos" element={<Permisos />} />
+                <Route path="/Cargos" element={<Cargos />} />
                 <Route path="/financial" element={<Financial />} />
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/pyramid" element={<Pyramid />} />
