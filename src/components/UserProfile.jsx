@@ -4,13 +4,11 @@ import { MdOutlineCancel } from "react-icons/md";
 import { Button } from ".";
 import { userProfileData } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
-import avatar from "../data/avatar.jpg";
 import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const { currentColor } = useStateContext();
-  const { user, status, errorMessage } = useSelector((state) => state.auth);
-  console.log(user, status, errorMessage);
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <div className="nav-item absolute right-1 shadow-2xl top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -29,21 +27,21 @@ const UserProfile = () => {
       <div className="flex gap-5 items-center mt-6 border-color border-b-1 pb-6">
         <img
           className="rounded-full h-24 w-24"
-          src={user?.usuario.image_url}
+          src={user?.data?.image_url}
           alt="user-profile"
         />
         <div>
           <p className="font-semibold text-xl dark:text-gray-200">
             {" "}
-            {user?.empleado.names}
+            {user?.data.empleado.names}
           </p>
           <p className="text-gray-500 text-sm dark:text-gray-400">
             {" "}
-            {user?.usuario.role.name}{" "}
+            {user?.data?.role.name}
           </p>
           <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">
             {" "}
-            {user?.usuario.email}{" "}
+            {user?.data.email}{" "}
           </p>
         </div>
       </div>

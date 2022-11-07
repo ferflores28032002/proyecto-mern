@@ -5,6 +5,8 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 
 export const AppRoutes = () => {
+
+
   return (
     <>
       <Routes>

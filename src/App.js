@@ -21,6 +21,7 @@ import {
   Informacion,
   ColorMapping,
   Ventas,
+  RealizarVenta,
 } from "./pages";
 import "./App.css";
 
@@ -44,7 +45,7 @@ const App = () => {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
     }
-  }, []);
+  }, [setCurrentColor,setCurrentMode ]);
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
@@ -98,6 +99,7 @@ const App = () => {
               <Route path="/Ventas" element={<Ventas />} />
               <Route path="/Categorias" element={<Categorias />} />
               <Route path="/Informacion" element={<Informacion />} />
+              <Route path="/realizarventas" element={<RealizarVenta />} />
 
               {/* charts  */}
               <Route path="/Password" element={<Password />} />
@@ -108,8 +110,7 @@ const App = () => {
               <Route path="/color-mapping" element={<ColorMapping />} />
               <Route path="/pyramid" element={<Pyramid />} />
               <Route path="/stacked" element={<Stacked />} />
-              <Route path="/*" element={<Navigate to="/"/>} />
-
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </div>
           <Footer />

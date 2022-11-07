@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import { ContextProvider } from "./contexts/ContextProvider";
-import "animate.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
 import { AppRoutes } from "./Routes/AppRoutes";
+import "./index.css";
+import "animate.css";
+import '../node_modules/react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>

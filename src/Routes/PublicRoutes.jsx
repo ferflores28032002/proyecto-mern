@@ -1,9 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import { UseSliceAuth } from "../store/hooks/UseSliceAuth";
 
 export const PublicRoutes = ({ children }) => {
-  const { status } = useSelector((store) => store.auth);
+  const { status, checkAuthToken } = UseSliceAuth();
 
-  return !status ? children : <Navigate to="/Roles" />;
+  useEffect(() => {
+    checkAuthToken()
+  }, [])
+  
+
+  return !status ? children : <Navigate to="/Dashboard" />;
 };

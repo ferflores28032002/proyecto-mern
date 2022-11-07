@@ -14,6 +14,7 @@ export { default as Password } from './Charts/Password';
 export { default as Cargos } from './Charts/Cargos';
 export { default as Pyramid } from './Charts/Pyramid';
 export { default as Stacked } from './Charts/Stacked';
+export { default as RealizarVenta } from './RealizarVenta';
 
 
 
