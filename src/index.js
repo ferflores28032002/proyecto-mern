@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./Routes/AppRoutes";
 import "./index.css";
 import "animate.css";
-import '../node_modules/react-toastify/dist/ReactToastify.css';
+import "../node_modules/react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <React.StrictMode>

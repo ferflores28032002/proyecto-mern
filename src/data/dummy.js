@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineCalendar, AiOutlineBarChart } from "react-icons/ai";
-import { FaShieldAlt } from "react-icons/fa";
+import { FaShieldAlt, FaUserTie } from "react-icons/fa";
 import { FaUserLock } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { BiCart } from "react-icons/bi";
@@ -866,8 +866,8 @@ export const themeColors = [
 
 export const userProfileData = [
   {
-    icon: <BsCurrencyDollar />,
-    title: "My Profile",
+    icon: <FaUserTie />,
+    title: "Mi Perfil",
     desc: "Account Settings",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",

@@ -26,8 +26,10 @@ const Line = () => {
         "info"
       );
     } else {
-      setpassword(initialState);
       updatePassword(password, password2);
+      setpassword(initialState);
+      setpassword1(initialState);
+      setpassword2(initialState);
     }
   };
 
@@ -36,14 +38,14 @@ const Line = () => {
       <div className="p-8 shadow-2xl rounded-xl">
         <FaUserCircle
           size={100}
-          className="text-[#695cfe] w-full text-center pb-4"
+          className="text-blue-800 w-full text-center pb-4"
         />
         <form onSubmit={handleSubmit} className="px-6 max-w-xl">
           <input
             type="password"
             className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
             placeholder="Nueva contraseña"
-            name="password1"
+            value={password1}
             onChange={(e) => setpassword1(e.target.value)}
           />
 
@@ -51,19 +53,19 @@ const Line = () => {
             type="password"
             className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-2"
             placeholder="Repite la nueva contraseña"
-            name="password2"
+            value={password2}
             onChange={(e) => setpassword2(e.target.value)}
           />
           <input
             type="password"
             className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-2"
             placeholder="Contraseña actual"
-            name="password"
+            value={password}
             onChange={(e) => setpassword(e.target.value)}
           />
 
           <div className="mb-4 block">
-            <button className=" w-full py-2 hover:bg-indigo-800 rounded bg-[#695cfe] text-white">
+            <button className=" w-full py-2  rounded bg-blue-800 text-white">
               Actualizar
             </button>
           </div>

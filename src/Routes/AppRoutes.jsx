@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import App from "../App";
 import Login from "../components/Login";
 import { PrivateRoutes } from "./PrivateRoutes";
@@ -9,6 +10,7 @@ export const AppRoutes = () => {
 
   return (
     <>
+      <ToastContainer/>
       <Routes>
         <Route
           path="/login"

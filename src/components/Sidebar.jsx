@@ -35,8 +35,8 @@ const Sidebar = () => {
               onClick={handleCloseSideBar}
               className="items-center gap-3 ml-9 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
-              <SiShopware className="text-[#655cfe]" />{" "}
-              <span className="text-[#655cfe]">Shoppy</span>
+              <SiShopware className="text-blue-800" />{" "}
+              <span className="text-blue-800">Shoppy</span>
             </Link>
             <TooltipComponent content="Menu" position="BottomCenter">
               <button
@@ -76,7 +76,7 @@ const Sidebar = () => {
                       style={{
                         animationDuration: "1s",
                       }}
-                      className="capitalize animate__animated  animate__bounceInRight"
+                      className="capitalize"
                     >
                       {link.name}
                     </span>

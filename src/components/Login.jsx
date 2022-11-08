@@ -10,12 +10,14 @@ const Login = () => {
 
   const {
     register,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
   const LoginData = (data) => {
     startLogin(data);
+    reset()
   };
   useEffect(() => {
     if (errorMessage !== undefined) {
@@ -31,6 +33,7 @@ const Login = () => {
         <form className="mt-4" onSubmit={handleSubmit(LoginData)}>
           <input
             type="text"
+            autoFocus={true}
             className="w-full border-indigo-200 border-1 focus:border-2 text-sm outline-none bg-indigo-100 mb-4 px-4 py-4 rounded"
             placeholder="Usuario"
             {...register("name", {

@@ -1,14 +1,17 @@
-import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
-
-import { Button } from ".";
-import { userProfileData } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 import { useSelector } from "react-redux";
+import { UseSliceAuth } from "../store/hooks/UseSliceAuth";
+import ButtonCerrarSesion from "./ButtonCerrarSesion";
+import Button from "./Button";
+import { FaUserTie } from "react-icons/fa";
+import { BsFillTelephoneForwardFill, BsShield } from "react-icons/bs";
+
 
 const UserProfile = () => {
   const { currentColor } = useStateContext();
   const { user } = useSelector((state) => state.auth);
+  const { UserLogout } = UseSliceAuth();
 
   return (
     <div className="nav-item absolute right-1 shadow-2xl top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -46,36 +49,75 @@ const UserProfile = () => {
         </div>
       </div>
       <div>
-        {userProfileData.map((item, index) => (
-          <div
-            key={index}
-            className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]"
+        <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+          <button
+            type="button"
+            style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
+            className=" text-xl rounded-lg p-3 hover:bg-light-gray"
           >
-            <button
-              type="button"
-              style={{ color: item.iconColor, backgroundColor: item.iconBg }}
-              className=" text-xl rounded-lg p-3 hover:bg-light-gray"
-            >
-              {item.icon}
-            </button>
+            <FaUserTie />
+          </button>
 
-            <div>
-              <p className="font-semibold dark:text-gray-200 ">{item.title}</p>
-              <p className="text-gray-500 text-sm dark:text-gray-400">
-                {" "}
-                {item.desc}{" "}
-              </p>
-            </div>
+          <div>
+            <p className="font-semibold dark:text-gray-200 ">Mi Perfil</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">
+              {" "}
+              {user?.data?.empleado.names} &nbsp;
+              {user?.data?.empleado.surnames}
+            </p>
           </div>
-        ))}
+        </div>
+
+        <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+          <button
+            type="button"
+            style={{
+              color: "rgb(0, 194, 146)",
+              backgroundColor: "rgb(235, 250, 242)",
+            }}
+            className=" text-xl rounded-lg p-3 hover:bg-light-gray"
+          >
+            <BsShield />
+          </button>
+
+          <div>
+            <p className="font-semibold dark:text-gray-200 ">Usuario</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">
+              {" "}
+              {user?.data?.name}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+          <button
+            type="button"
+            style={{
+              color: "rgb(255, 244, 229)",
+              backgroundColor: "rgb(254, 201, 15)",
+            }}
+            className=" text-xl rounded-lg p-3 hover:bg-light-gray"
+          >
+            <BsFillTelephoneForwardFill />
+          </button>
+
+          <div>
+            <p className="font-semibold dark:text-gray-200 ">Dirección</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">
+              {" "}
+              {user?.data?.empleado.telephone}
+            </p>
+          </div>
+        </div>
       </div>
       <div className="mt-5">
-        <Button
+        <ButtonCerrarSesion
           color="white"
           bgColor={currentColor}
-          text="Logout"
+          text="Cerrar Sesión"
           borderRadius="10px"
           width="full"
+          funcion={() => UserLogout()}
         />
       </div>
     </div>

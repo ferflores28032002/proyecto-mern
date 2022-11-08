@@ -14,3 +14,6 @@ export { default as Pie } from "./Charts/Pie";
 export { default as ChartsHeader } from "./ChartsHeader";
 export { default as Header } from "./Header";
 export { default as Login } from "./Login";
+export { default as ButtonCerrarSesion } from "./ButtonCerrarSesion";
+export { default as CardProduct } from "./CardProduct";
+export { default as SearchProduct } from "./SearchProduct";

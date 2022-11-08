@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sistemaApi } from "../../Api";
 import {
   clearErrorMessage,
+  Logout,
   onChecking,
   onLogin,
   onLogout,
@@ -46,6 +47,13 @@ export const UseSliceAuth = () => {
     }
   };
 
+
+  const UserLogout = () => {
+    dispatch( Logout() )
+    localStorage.removeItem("productos")
+    localStorage.removeItem("token")
+  }
+
   return {
     // Atributos
     user,
@@ -55,5 +63,6 @@ export const UseSliceAuth = () => {
     // Métodos
     startLogin,
     checkAuthToken,
+    UserLogout
   };
 };

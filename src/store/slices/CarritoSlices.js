@@ -2,23 +2,28 @@ import { toast } from "react-toastify";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
-export const initialState = localStorage.getItem("productos")
-  ? JSON.parse(localStorage.getItem("productos"))
-  : [];
-
 export const CarritoSlices = createSlice({
   name: "CarritoSlices",
-  initialState,
+  initialState: [],
   reducers: {
-    aumentar: (state, action) => {
+    addToCart: (state, action) => {
       const productExistente = state.findIndex(
         (product) => product.id === action.payload.id
       );
 
       if (productExistente >= 0) {
         state[productExistente].cantidad += 1;
+        toast.success(
+          `Agregado al carrito x${state[productExistente].cantidad}`,
+          {
+            position: "top-right",
+          }
+        );
       } else {
         state.push({ ...action.payload, cantidad: 1 });
+        toast.success(`Agregado al carrito`, {
+          position: "top-center",
+        });
       }
 
       localStorage.setItem("productos", JSON.stringify(state));
@@ -63,4 +68,4 @@ export const CarritoSlices = createSlice({
   },
 });
 
-export const { aumentar, decrementar, vaciarCart } = CarritoSlices.actions;
+export const { addToCart, decrementar, vaciarCart } = CarritoSlices.actions;
