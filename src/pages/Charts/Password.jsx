@@ -38,7 +38,7 @@ const Line = () => {
       <div className="p-8 shadow-2xl rounded-xl">
         <FaUserCircle
           size={100}
-          className="text-blue-800 w-full text-center pb-4"
+          className="text-[#818cf8] w-full text-center pb-4"
         />
         <form onSubmit={handleSubmit} className="px-6 max-w-xl">
           <input
@@ -65,7 +65,7 @@ const Line = () => {
           />
 
           <div className="mb-4 block">
-            <button className=" w-full py-2  rounded bg-blue-800 text-white">
+            <button className=" w-full py-2  rounded bg-[#818cf8] text-white">
               Actualizar
             </button>
           </div>

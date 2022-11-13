@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Footer, Sidebar, ThemeSettings, Cargos } from "./components";
 import {
   Dashboard,
   Inventario,
@@ -16,7 +16,6 @@ import {
   Password,
   Roles,
   Permisos,
-  Cargos,
   Financial,
   Informacion,
   ColorMapping,

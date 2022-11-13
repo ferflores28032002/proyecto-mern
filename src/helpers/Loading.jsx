@@ -1,5 +1,5 @@
 import {
-  // BallTriangle,
+  BallTriangle,
   // Audio,
   // Dna,
   // Blocks,
@@ -15,7 +15,6 @@ export const Loading = () => {
         width={100}
         radius={5}
         color="#695CFE"
-        ariaLabel="Cargando......"
         wrapperClass={{}}
         wrapperStyle=""
         visible={true}

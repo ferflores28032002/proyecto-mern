@@ -36,7 +36,7 @@ const UserProfile = () => {
         <div>
           <p className="font-semibold text-xl dark:text-gray-200">
             {" "}
-            {user?.data.empleado.names}
+            {user?.data.empleado.name}
           </p>
           <p className="text-gray-500 text-sm dark:text-gray-400">
             {" "}
@@ -62,7 +62,7 @@ const UserProfile = () => {
             <p className="font-semibold dark:text-gray-200 ">Mi Perfil</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">
               {" "}
-              {user?.data?.empleado.names} &nbsp;
+              {user?.data?.empleado.name} &nbsp;
               {user?.data?.empleado.surnames}
             </p>
           </div>

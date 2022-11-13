@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Modal } from "../../components";
-import { useRoles } from "../../hooks/";
-import Datatables from "../Datatables";
+import { useCargos } from "../../hooks/";
+import Datatables from "../../pages/Datatables";
+import Modal from "../Modal";
 
-const Roles = () => {
+const Cargos = () => {
+
   const columns = [
     {
       name: "id",
@@ -17,22 +18,24 @@ const Roles = () => {
     {
       name: "Opciones",
       selector: (row) => (
-        <button onClick={() => deleteRoles(row.id)}>Eliminar</button>
+        <button
+          onClick={()=> deleteCargos(row.id)}
+        >Eliminar</button>
+  
       ),
     },
   ];
-
-  const { roles, loadroles, addRoles, deleteRoles } = useRoles();
+  const { cargos, loadCargos, addCargos, deleteCargos } = useCargos();
   const [closeModal, setcloseModal] = useState(false);
   const { handleSubmit, register, reset } = useForm();
 
   useEffect(() => {
-    loadroles();
+    loadCargos();
   }, []);
 
   // Datos del formulario
   const onSubmit = (data) => {
-    addRoles(data);
+    addCargos(data);
   };
 
   return (
@@ -58,13 +61,14 @@ const Roles = () => {
           />
 
           <div>
-            <button>Crear Rol</button>
+            <button>Crear Cargo</button>
           </div>
         </form>
       </Modal>
-      <Datatables columns={columns} data={roles} />
+
+      <Datatables columns={columns} data={cargos} />
     </div>
   );
 };
 
-export default Roles;
+export default Cargos;

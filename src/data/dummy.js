@@ -573,7 +573,7 @@ export const links = [
         icon: <AiOutlineBarChart size={25} />,
       },
       {
-        name: "pie",
+        name: "Cargos",
         icon: <FiPieChart size={25} />,
       },
       {

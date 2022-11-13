@@ -7,16 +7,16 @@ const Datatables = ({ columns, data }) => {
 
   useEffect(() => {
     const resultado = data.filter((elemento) => {
-      return elemento.title.toLowerCase().match(search.toLocaleLowerCase());
+      return elemento.name.toLowerCase().match(search.toLocaleLowerCase());
     });
     setfiltrado(resultado);
   }, [search]);
 
   return (
-    <div className="shadow-2xl p-4 rounded-xlp">
+    <div className="shadow-2xl p-4">
       <DataTable
         columns={columns}
-        data={filtrado}
+        data={search === "" ? data : filtrado}
         pagination={true}
         subHeader
         highlightOnHover
