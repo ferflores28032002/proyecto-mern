@@ -20,17 +20,19 @@ export const useRoles = () => {
 
     }
 
-    const addRoles = async ({ name }) => {
+    const addRoles = async ({ name, description }) => {
         try {
             
-            const { data } = await sistemaApi.post("/roles", { name })
+            const data = await sistemaApi.post("/roles", { name, description })
 
-            console.log(data)
 
+            if(data.status === 200){
+                Swal.fire("Creado exitosamente", "Creado", "success")
+            }
             loadroles()
 
         } catch (error) {
-            console.log(error)
+            Swal.fire(error.response.data.msg, `El rol ${name} ya existe`, "warning")
         }
     }
 
@@ -50,6 +52,21 @@ export const useRoles = () => {
         }
     }
 
+    const editRoles = async ({ id, name, description }) => {
+        try {
+            
+            const data = await sistemaApi.put(`/roles/${id}`, { name, description })
+
+            if(data.status === 200){
+                Swal.fire("Editado exitosamente", "Creado", "success")
+            }
+            loadroles()
+
+        } catch (error) {
+            Swal.fire(error.response.data.msg, `El rol ${name} ya existe`, "warning")
+        }
+    }
+
 
 
     return {
@@ -59,7 +76,8 @@ export const useRoles = () => {
         // Métodos
         loadroles,
         addRoles,
-        deleteRoles
+        deleteRoles,
+        editRoles
 
 
     }

@@ -20,11 +20,11 @@ export const useCategorias = () => {
 
     }
 
-    const addCategorias = async ({ name }) => {
+    const addCategorias = async ({ name, description }) => {
 
         try {
             
-            const data = await sistemaApi.post("/categories", { name })
+            const data = await sistemaApi.post("/categories", { name, description })
             console.log(data.status)
 
             if(data.status === 200){
@@ -33,7 +33,7 @@ export const useCategorias = () => {
 
             loadcategorias()
         } catch (error) {
-            console.log(error)
+            Swal.fire(error.response.data.msg, `La categoria ${name} ya existe`, "warning")
         }
     }
 
@@ -55,16 +55,40 @@ export const useCategorias = () => {
         }
     }
 
+    const editCategoria = async ({ id, name, description}) => {
+
+        try {
+            
+            const data = await sistemaApi.put(`/categories/${id}`, {name, description})
+
+            if(data.status === 200) {
+                Swal.fire("Categoria actuelizada", "actuelizada", "success")
+            }
+
+            loadcategorias()
+
+
+        } catch (error) {
+            Swal.fire(error.response.data.msg, `La categoria ${name} ya existe`, "warning")
+        }
+    }
+
+
+
+    
+
 
 
     return {
         // Atributos 
         categorias,
 
+
         // Métodos
         loadcategorias,
         addCategorias,
-        deleteCategorias
+        deleteCategorias,
+        editCategoria
 
 
     }

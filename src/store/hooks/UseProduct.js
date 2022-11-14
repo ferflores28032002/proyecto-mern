@@ -1,35 +1,32 @@
-import { useDispatch } from "react-redux"
-import sistemaApi from "../../Api/sistemaApi"
-import { getProductos } from "../slices/ProductSlice"
+// import { useDispatch } from "react-redux"
+// import sistemaApi from "../../Api/sistemaApi"
+// import { getProductos } from "../slices/ProductSlice"
 
 
-export const UseProduct = () => {
-    const dispatch = useDispatch()
+// export const UseProduct = () => {
+//     const dispatch = useDispatch()
 
 
-    const getProducts = async () => {
+//     const getProducts = async () => {
 
-        try {
+//         try {
             
-            const { data } = await sistemaApi.get("/product")
+//             const { data } = await sistemaApi.get("/product")
             
-            dispatch( getProductos(data.data) )
+//             dispatch( getProductos(data.data) )
 
-        } catch (error) {
-            console.log(error)
-        }
-
-
-    }
+//         } catch (error) {
+//             console.log(error)
+//         }
 
 
+//     }
 
+//     return {
 
-    return {
+//         // Métodos
 
-        // Métodos
+//         getProducts
 
-        getProducts
-
-    }
-}
+//     }
+// }

@@ -9,20 +9,22 @@ import {
 } from "../slices/authSlice";
 
 export const UseSliceAuth = () => {
-  
+
   const { user, status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const startLogin = async ({ name, password }) => {
+
     try {
+
       dispatch(onChecking());
       const { data } = await sistemaApi.post("/login/user", { name, password });
-      console.log(data)
-      // Peticion para buscar el usuario
-      const resp = await sistemaApi.get(`/search/user/${data.usuario.id}`);
+
+      const resp = await sistemaApi.get(`/user/${data.usuario.id}`);
       localStorage.setItem("token", data.token);
       dispatch(onLogin(resp.data));
 
+      
     } catch (error) {
       dispatch(onLogout("¡Credenciales Incorrectas!"));
       setTimeout(() => {
@@ -38,7 +40,7 @@ export const UseSliceAuth = () => {
 
     try {
       const { data } = await sistemaApi.get("/renew/token");
-      const resp = await sistemaApi.get(`/search/user/${data.id}`);
+      const resp = await sistemaApi.get(`/user/${data.id}`);
       localStorage.setItem("token", data.token);
       dispatch(onLogin(resp.data));
     } catch (error) {
@@ -47,12 +49,11 @@ export const UseSliceAuth = () => {
     }
   };
 
-
   const UserLogout = () => {
-    dispatch( Logout() )
-    localStorage.removeItem("productos")
-    localStorage.removeItem("token")
-  }
+    dispatch(Logout());
+    localStorage.removeItem("productos");
+    localStorage.removeItem("token");
+  };
 
   return {
     // Atributos
@@ -63,6 +64,6 @@ export const UseSliceAuth = () => {
     // Métodos
     startLogin,
     checkAuthToken,
-    UserLogout
+    UserLogout,
   };
 };
