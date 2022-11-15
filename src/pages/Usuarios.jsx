@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../components/Modal";
 import Datatables from "./Datatables";
-import { FaUserPlus } from "react-icons/fa";
+import { FaUserFriends, FaUserPlus } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useEmpleados, useForms, useRoles, useUsuarios } from "../hooks/";
 import { MdDelete } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { sistemaApi } from "../Api";
+import { Header } from "../components";
 
 
 
@@ -14,12 +15,18 @@ const Usuarios = () => {
 
   const columns = [
     {
-      name: "id",
-      selector: (row) => row.id,
-    },
-    {
       name: "Usuario",
       selector: (row) => row.name,
+    },
+    {
+      name: "imagen",
+      selector: (row) => (
+        <>
+
+          <img src={row.image_url} className="w-10 shadow-2xl  h-10 rounded-full object-cover " />
+        
+        </>
+      )
     },
     {
       name: "Correo",
@@ -37,13 +44,13 @@ const Usuarios = () => {
             className="p-1 rounded-lg bg-red-500"
             onClick={() => deleteUsuarios(row.id)}
           >
-            <MdDelete size={25} className="text-white" />
+            <MdDelete size={20} className="text-white" />
           </button>
           <button
             className="p-1 rounded-lg bg-blue-600"
             onClick={()=>editar(row.id)}
           >
-            <HiOutlinePencilAlt className="text-white" size={25} />
+            <HiOutlinePencilAlt className="text-white" size={20} />
           </button>
         </div>
       ),
@@ -80,14 +87,17 @@ const Usuarios = () => {
     e.preventDefault()
 
     editUsuarios({...formState,image: e.target.image.files })
-    console.log(e.target.image.files)
+
 
   }
 
 
 
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+    <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+
+      <Header title="Usuarios" color="#fff" bac="#fcd34d" icono={<FaUserFriends/>}   />
 
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
@@ -148,6 +158,24 @@ const Usuarios = () => {
           <input 
             type="file" 
             {...register("image")}
+            className="
+            file:bg-gradient-to-b file:from-blue-500 file:to-blue-600
+            file:px-4 file:py-1 file:m-2
+            file:border-none
+            file:rounded-full
+            file:text-white
+            file:cursor-pointer
+            file:shadow-lg file:shadow-blue-600/50
+            font-semibold
+            text-white/80
+            text-indigo-400
+            pr-4
+            rounded-full
+            cursor-pointer
+            shadow-lg shadow-gray-700/60
+
+
+          "
           
           />
 
@@ -227,7 +255,24 @@ const Usuarios = () => {
           <input 
             type="file" 
             name="image"
-          
+            className="
+            file:bg-gradient-to-b file:from-blue-500 file:to-blue-600
+            file:px-4 file:py-1 file:m-2
+            file:border-none
+            file:rounded-full
+            file:text-white
+            file:cursor-pointer
+            file:shadow-lg file:shadow-blue-600/50
+            font-semibold
+            text-white/80
+            text-indigo-400
+            pr-4
+            rounded-full
+            cursor-pointer
+            shadow-lg shadow-gray-700/60
+
+
+          "
           />
 
           <div>

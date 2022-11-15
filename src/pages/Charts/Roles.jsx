@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Modal } from "../../components";
+import { Header, Modal } from "../../components";
 import { useForms, useRoles } from "../../hooks/";
 import Datatables from "../Datatables";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdOutlineVerifiedUser } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { sistemaApi } from "../../Api";
 
@@ -71,7 +71,10 @@ const Roles = () => {
   }
 
   return (
-    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+      <Header title="Roles de usuario" bac="#22c55e" color="#fff" icono={<MdOutlineVerifiedUser/>} />
+
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
         onClick={() => setcloseModal(!closeModal)}

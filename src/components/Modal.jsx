@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
+import { FaUserTie } from "react-icons/fa";
 
 const Modal = ({ children, closeModal, setcloseModal, titulo }) => {
   return (
@@ -8,7 +9,23 @@ const Modal = ({ children, closeModal, setcloseModal, titulo }) => {
         <Overlay>
           <ContenedorModal>
             <ContenedorHeader>
-              <h1>{titulo ? titulo : "Hola"}</h1>
+              
+              <div className="flex gap-3 py-2 border-b-1 border-color px-2 hover:bg-light-gray cursor-pointer">
+                <button
+                  type="button"
+                  style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
+                  className=" text-xl rounded-lg p-3 hover:bg-light-gray"
+                >
+                  <FaUserTie />
+                </button>
+
+                <div>
+                  <p className="font-semibold">Empleado</p>
+                  <p className="text-gray-500 text-sm dark:text-gray-400">
+                    {titulo ? titulo : "Añadir"}
+                  </p>
+                </div>
+              </div>
             </ContenedorHeader>
 
             <BottonCerrar onClick={() => setcloseModal(false)}>
@@ -36,7 +53,7 @@ const Overlay = styled.div`
   z-index: 999;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   padding: 40px;
   display: flex;
   justify-content: center;
@@ -45,7 +62,7 @@ const Overlay = styled.div`
 
 const ContenedorModal = styled.div`
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   min-height: 100px;
   background-color: #fff;
   position: relative;
@@ -57,18 +74,8 @@ const ContenedorModal = styled.div`
 
 const ContenedorHeader = styled.div`
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 15px;
 
-  h1 {
-    z-index: 999;
-    font-weight: 500;
-    font-size: 16px;
-    color: #1766dc;
-  }
 `;
 
 const BottonCerrar = styled.button`

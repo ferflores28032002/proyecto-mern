@@ -2,6 +2,8 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { FaUserCircle } from "react-icons/fa";
 import { CambioPassword } from "../../store/hooks/CambioPassword";
+import { Header } from "../../components";
+import { RiUserSettingsLine } from "react-icons/ri";
 
 const Line = () => {
   const initialState = "";
@@ -34,7 +36,10 @@ const Line = () => {
   };
 
   return (
-    <div className="w-full min-h-screen rounded-lg flex items-center justify-center pb-12">
+    <div className="m-2 md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+      <Header title="Cambia tu Contraseña" color="#ffffff" bac="#a5b4fc" icono={<RiUserSettingsLine/>} />
+      <div className=" flex items-center justify-center">
       <div className="p-8 shadow-2xl rounded-xl">
         <FaUserCircle
           size={100}
@@ -71,6 +76,8 @@ const Line = () => {
           </div>
         </form>
       </div>
+      </div>
+
     </div>
   );
 };

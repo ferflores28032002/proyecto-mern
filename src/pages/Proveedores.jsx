@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaAddressCard } from "react-icons/fa";
+import Header from "../components/Header";
 import Modal from "../components/Modal";
 import { useProveedores } from "../hooks/useProveedores";
 import Datatables from "./Datatables";
@@ -39,7 +41,10 @@ const Proveedores = () => {
   };
 
   return (
-    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+      <Header title="Proveedores" color="#fff" bac="#f472b6" icono={<FaAddressCard/>} />
+
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
         onClick={() => setcloseModal(!closeModal)}

@@ -6,6 +6,8 @@ import Modal from "../Modal";
 import { MdDelete } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import sistemaApi from "../../Api/sistemaApi";
+import Header from "../Header";
+import { FaUserShield } from "react-icons/fa";
 
 const Cargos = () => {
 
@@ -74,7 +76,10 @@ const Cargos = () => {
 
 
   return (
-    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+      <Header title="Cargos" bac="#eab308" color="#fff" icono={<FaUserShield/>} />
+
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
         onClick={() => setcloseModal(!closeModal)}

@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import { sistemaApi } from "../Api";
-import { Modal } from "../components";
+import { Header, Modal } from "../components";
 import { useCategorias, useForms } from "../hooks/";
 import Datatables from "./Datatables";
+import { Iconos } from "../helpers/Iconos";
 
 
 
@@ -50,7 +51,7 @@ const Categorias = () => {
   const { handleSubmit, register, reset } = useForm();
   const { onInputChange, onResetForm, name, description, setFormState, formState } = useForms({name: "", description: ""})
   const { categorias, loadcategorias, addCategorias, deleteCategorias, editCategoria } = useCategorias();
-
+  const {IoMdOptions} = Iconos()
 
   const editar = async (id) => {
 
@@ -79,7 +80,10 @@ const Categorias = () => {
   
 
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+    <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
+
+    <Header title="Categorias" color="#fff" bac="#db2777" icono={<IoMdOptions/>} />
+
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
         onClick={() => setcloseModal(!closeModal)}

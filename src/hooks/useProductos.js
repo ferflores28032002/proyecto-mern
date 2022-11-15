@@ -70,6 +70,54 @@ export const useProductos = () => {
     }
 
 
+    
+    const editProducts  = async ({id, name, description, stock, price, idCategories, idProveedor, image }) => {
+
+        try {
+
+            if(image.length){
+
+                const reader = new FileReader();
+                reader.readAsDataURL(image[0])
+            
+                    reader.onloadend = async () => {
+    
+                        try{
+                            const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),  idProveedor: parseInt(idProveedor), image:reader.result } )
+                            if(data.status === 200) {
+                                Swal.fire("Producto actualizado correctamente", "agregado", "success")
+                            }
+                            loadProductos()
+                        }catch(error){
+    
+                            Swal.fire(error.response.data.msg, `El Producto ${name} ya existe`, "warning")
+                        }
+                    }
+           
+            }else{
+
+                try{
+                    const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),  idProveedor: parseInt(idProveedor)} )
+                    if(data.status === 200) {
+                        Swal.fire("Usuario actualizado correctamente", "agregado", "success")
+                    }
+                    loadProductos()
+                }catch(error){
+
+                    Swal.fire(error.response.data.msg, `El producto ${name} ya existe`, "warning")
+                }
+
+            }
+
+            
+          } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+
 
     return {
         // Atributos
@@ -80,7 +128,8 @@ export const useProductos = () => {
         loadProductos,
         addProductos,
         deleteProductos,
-        oneProducto
+        oneProducto,
+        editProducts
 
     }
 }
