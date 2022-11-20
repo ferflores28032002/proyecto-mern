@@ -31,7 +31,7 @@ const CardProduct = ({producto}) => {
       <div className="flex gap-3 mt-6">
 
         <button
-          className="py-2  w-32 flex-shrink-0 px-4 font-semibold bg-blue-800 text-sm text-white rounded-md"
+          className="py-2  w-32 flex-shrink-0 px-4 font-semibold bg-indigo-600 text-sm text-white rounded-md"
           onClick={() => dispatch( addToCart(producto) )}
         > 
           Add to Cart

@@ -7,6 +7,7 @@ import {
   onLogin,
   onLogout,
 } from "../slices/authSlice";
+import { vaciarCart2 } from "../slices/CarritoSlices";
 
 export const UseSliceAuth = () => {
 
@@ -51,6 +52,7 @@ export const UseSliceAuth = () => {
 
   const UserLogout = () => {
     dispatch(Logout());
+    dispatch( vaciarCart2() )
     localStorage.removeItem("productos");
     localStorage.removeItem("token");
   };

@@ -1,6 +1,6 @@
 import {
   BallTriangle,
-  // Audio,
+  Audio,
   // Dna,
   // Blocks,
   // MutatingDots,
@@ -9,8 +9,8 @@ import {
 
 export const Loading = () => {
   return (
-    <div className="flex justify-center items-center bg-[#283046] w-full min-h-screen">
-      <BallTriangle
+    <div className="flex fixed left-0 top-0 justify-center flex-col gap-3 items-center bg-white w-full min-h-screen">
+      <Audio
         height={100}
         width={100}
         radius={5}
@@ -19,6 +19,10 @@ export const Loading = () => {
         wrapperStyle=""
         visible={true}
       />
+
+      <h4>Cargando ...</h4>
+
+
     </div>
   );
 };

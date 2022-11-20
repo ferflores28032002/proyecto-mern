@@ -27,7 +27,7 @@ export const useCargos = () => {
             const data = await sistemaApi.post("/cargos", { name, description } )
 
             if(data.status === 200) {
-                Swal.fire("Añadido correctamente", "añadido", "success")
+                Swal.fire("¡Cargo Añadido correctamente!", `${name} creado con exito`, "success")
             }
 
             loadCargos()
@@ -45,7 +45,7 @@ export const useCargos = () => {
             const data = await sistemaApi.delete(`/cargos/${id}`)
 
             if(data.status === 200){
-                Swal.fire("Cargo eliminado correctamente", "eliminado", "success")
+                Swal.fire("¡Cargo eliminado correctamente!", `${name} eliminado`, "success")
             }
 
             loadCargos()
@@ -64,7 +64,7 @@ export const useCargos = () => {
             const data = await sistemaApi.put(`/cargos/${id}`, { name , description})
 
             if(data.status === 200) {
-                Swal.fire("Cargo actualizado", "correcto", "success")
+                Swal.fire("¡Cargo actualizado!", "modificado con exito", "success")
             }
             loadCargos()
 

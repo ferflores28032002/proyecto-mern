@@ -48,7 +48,7 @@ const Line = () => {
         <form onSubmit={handleSubmit} className="px-6 max-w-xl">
           <input
             type="password"
-            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
+            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-1"
             placeholder="Nueva contraseña"
             value={password1}
             onChange={(e) => setpassword1(e.target.value)}
@@ -56,14 +56,14 @@ const Line = () => {
 
           <input
             type="password"
-            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-2"
+            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-1"
             placeholder="Repite la nueva contraseña"
             value={password2}
             onChange={(e) => setpassword2(e.target.value)}
           />
           <input
             type="password"
-            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-2"
+            className="w-full placeholder:text-sm border-indigo-200 border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded  focus:border-1"
             placeholder="Contraseña actual"
             value={password}
             onChange={(e) => setpassword(e.target.value)}

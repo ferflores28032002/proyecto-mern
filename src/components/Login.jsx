@@ -4,6 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import logo2 from "../assets/imagenes/logoLogin.svg";
 import { UseSliceAuth } from "../store/hooks/UseSliceAuth";
+import {HiUser} from 'react-icons/hi'
+import {RiLockPasswordFill} from 'react-icons/ri'
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { startLogin, errorMessage } = UseSliceAuth();
@@ -30,33 +33,51 @@ const Login = () => {
       <div className="max-w-md mx-2 py-8 p-10 shadow-2xl rounded bg-white">
         <img src={logo2} alt="logo de la empresa" />
 
-        <form className="mt-4" onSubmit={handleSubmit(LoginData)}>
-          <input
-            type="text"
-            autoFocus={true}
-            className="w-full border-indigo-200 border-1 focus:border-2 text-sm outline-none bg-indigo-100 mb-4 px-4 py-4 rounded"
-            placeholder="Usuario"
-            {...register("name", {
-              required: true,
-            })}
-          />
+        <form className="mt-8" onSubmit={handleSubmit(LoginData)}>
+            <div className="relative mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="Nombre"
+                {...register("name",{
+                  required:true
+                })}
+              />
 
-          <input
-            type="password"
-            className="w-full border-indigo-200 text-sm focus:border-2 border-1 outline-none bg-indigo-100 mb-4 px-4 py-4 rounded"
-            placeholder="Password"
-            {...register("password", {
-              required: true,
-            })}
-          />
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <HiUser className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div>
 
-          <div className="mb-4 block">
+            <div className="relative mb-3 mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="contraseña"
+                {...register("password",{
+                  required:true
+                })}
+              />
+
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <RiLockPasswordFill className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div> 
+
+
+            <Link className="text-sm" to="/email/password">
+              ¿Olvido la contraseña?
+            </Link>  
+
+          <div className="mt-4 block mb-1">
             <button className=" w-full py-2 hover:bg-indigo-800 rounded bg-[#695cfe] text-white">
               Entrar
             </button>
           </div>
-          {errors.name?.type === "required" && (
-            <p className="text-sm w-full text-center text-zinc-600">
+
+
+          {(errors.name?.type || errors.password?.type) === "required" && (
+            <p className="text-sm w-full  text-center text-zinc-600">
               ¡Asegurate de rellenar los campos!
             </p>
           )}

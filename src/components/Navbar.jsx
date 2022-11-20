@@ -8,6 +8,10 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 import { useSelector } from "react-redux";
+import { FaUserAlt } from "react-icons/fa";
+import { GrCompliance } from "react-icons/gr";
+import { Link } from "react-router-dom";
+import { BiUser } from "react-icons/bi";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -28,6 +32,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart);
 
   const {
     currentColor,
@@ -68,27 +73,40 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
       <div className="flex">
-        <NavButton
+        {/* <NavButton
           title="Cart"
           customFunc={() => handleClick("cart")}
           color={currentColor}
-          icon={<FiShoppingCart />}
-        />
-        <NavButton
+          icon={<GrCompliance />}
+        /> */}
+
+        <button
+          onClick={() => handleClick("cart")}
+          className="p-2 flex items-center relative mr-2"
+        >
+          <button className="text-blue-900">
+            <FiShoppingCart size={20} />
+          </button>
+          <span className="absolute flex items-center justify-center text-[0.8rem] h-6 w-6 top-0 -right-2 rounded-full bg-purple-500 p-1 text-white">
+            {cart.length}
+          </span>
+        </button>
+
+        {/* <NavButton
           title="Chat"
           dotColor="#03C9D7"
           customFunc={() => handleClick("chat")}
           color={currentColor}
           icon={<BsChatLeft />}
-        />
+        /> */}
         <NavButton
-          title="Notification"
+          title="usuarios"
           dotColor="rgb(254, 201, 15)"
           customFunc={() => handleClick("notification")}
           color={currentColor}
-          icon={<RiNotification3Line />}
+          icon={<BiUser />}
         />
-        <TooltipComponent content="Profile" position="BottomCenter">
+        <TooltipComponent content="Perfil" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick("userProfile")}
@@ -99,7 +117,7 @@ const Navbar = () => {
               alt="user-profile"
             />
             <p>
-              <span className="text-gray-400 text-14">Hi,</span>{" "}
+              {/* <span className="text-gray-400 text-14"></span>{" "} */}
               <span className="text-gray-400 font-bold ml-1 text-14">
                 {user?.data?.name}
               </span>

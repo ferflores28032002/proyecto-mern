@@ -2,25 +2,24 @@ import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
 import { FaUserTie } from "react-icons/fa";
 
-const Modal = ({ children, closeModal, setcloseModal, titulo }) => {
+const Modal = ({ children, closeModal, setcloseModal, titulo, bac, color, icono, info }) => {
   return (
     <>
       {closeModal && (
         <Overlay>
           <ContenedorModal>
             <ContenedorHeader>
-              
               <div className="flex gap-3 py-2 border-b-1 border-color px-2 hover:bg-light-gray cursor-pointer">
                 <button
                   type="button"
-                  style={{ color: "#03C9D7", backgroundColor: "#E5FAFB" }}
+                  style={{ color: `${ color ? color : `#03C9D7`}`, backgroundColor: `${bac ? bac : `#E5FAFB`}` }}
                   className=" text-xl rounded-lg p-3 hover:bg-light-gray"
                 >
-                  <FaUserTie />
+                  {icono ? icono : <FaUserTie /> }
                 </button>
 
                 <div>
-                  <p className="font-semibold">Empleado</p>
+                  <p className="font-semibold">{info ? info : "modulo"}</p>
                   <p className="text-gray-500 text-sm dark:text-gray-400">
                     {titulo ? titulo : "Añadir"}
                   </p>
@@ -62,7 +61,7 @@ const Overlay = styled.div`
 
 const ContenedorModal = styled.div`
   width: 100%;
-  max-width: 650px;
+  max-width: 600px;
   min-height: 100px;
   background-color: #fff;
   position: relative;
@@ -75,21 +74,20 @@ const ContenedorModal = styled.div`
 const ContenedorHeader = styled.div`
   z-index: 999;
   margin-bottom: 15px;
-
 `;
 
 const BottonCerrar = styled.button`
   position: absolute;
-  top: 15px;
+  top: 18px;
   right: 20px;
-  width: 30px;
+  width: 40px;
   border: none;
   background-color: none;
   cursor: pointer;
   transition: 0.3s ease all;
   border-radius: 5px;
   color: #818cf8;
-  font-weight: 500;
+  font-weight: bold;
 
   &:hover {
     background: #f2f2f2;

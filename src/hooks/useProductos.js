@@ -6,6 +6,7 @@ export const useProductos = () => {
 
     const [productos, setProductos] = useState([])
     const [productoid, setproductoid] = useState({})
+    const [loading, setloading] = useState(false)
 
     const loadProductos = async () => {
         try {
@@ -19,17 +20,18 @@ export const useProductos = () => {
         }
     }
 
-    const addProductos = async ({ name, description, stock, price, idCategories, idUserCreateProduct, idProveedor, image }) => {
+    const addProductos = async ({ name, description, stock, price, idCategories, idUserCreateProduct, image }) => {
 
         try {
 
             const reader = new FileReader();
             reader.readAsDataURL(image[0])
             reader.onloadend = async () => {
-                const data = await sistemaApi.post("/product",{ name, description, stock, price, idCategories: parseInt(idCategories), idUserCreateProduct:parseInt(idUserCreateProduct), idProveedor: parseInt(idProveedor), image:reader.result } )
-    
+                setloading(true)
+                const data = await sistemaApi.post("/product",{ name, description, stock, price, idCategories: parseInt(idCategories), idUserCreateProduct:parseInt(idUserCreateProduct), image:reader.result } )
+                setloading(false)
                 if(data.status === 200) {
-                    Swal.fire("producto agregado correctamente", "agregado", "success")
+                    Swal.fire("¡producto agregado correctamente!", "Agregado", "success")
                 }
                 loadProductos()
             }
@@ -46,7 +48,7 @@ export const useProductos = () => {
             const data = await sistemaApi.delete(`/product/${id}`)
 
             if(data.status === 200) {
-                Swal.fire("eliminado", "producto eliminado", "success")
+                Swal.fire("¡Producto Eliminado!", "¡Eliminado exitosamente!", "success")
             }
             loadProductos()
 
@@ -71,7 +73,7 @@ export const useProductos = () => {
 
 
     
-    const editProducts  = async ({id, name, description, stock, price, idCategories, idProveedor, image }) => {
+    const editProducts  = async ({id, name, description, stock, price, idCategories, image }) => {
 
         try {
 
@@ -83,12 +85,15 @@ export const useProductos = () => {
                     reader.onloadend = async () => {
     
                         try{
-                            const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),  idProveedor: parseInt(idProveedor), image:reader.result } )
+                            setloading(true)
+                            const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),image:reader.result } )
+                            setloading(false)
                             if(data.status === 200) {
-                                Swal.fire("Producto actualizado correctamente", "agregado", "success")
+                                Swal.fire("Producto actualizado correctamente", "Actualizado", "success")
                             }
                             loadProductos()
                         }catch(error){
+                            setloading(false)
     
                             Swal.fire(error.response.data.msg, `El Producto ${name} ya existe`, "warning")
                         }
@@ -97,12 +102,15 @@ export const useProductos = () => {
             }else{
 
                 try{
-                    const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),  idProveedor: parseInt(idProveedor)} )
+                    setloading(true)
+                    const data = await sistemaApi.put(`/product/${id}`,{ name, description, stock, price, idCategories: parseInt(idCategories),  } )
+                    setloading(false)
                     if(data.status === 200) {
-                        Swal.fire("Usuario actualizado correctamente", "agregado", "success")
+                        Swal.fire("Usuario actualizado correctamente", "Modificado", "success")
                     }
                     loadProductos()
                 }catch(error){
+                    setloading(false)
 
                     Swal.fire(error.response.data.msg, `El producto ${name} ya existe`, "warning")
                 }
@@ -123,6 +131,7 @@ export const useProductos = () => {
         // Atributos
         productos,
         productoid,
+        loading,
 
         // Métodos
         loadProductos,

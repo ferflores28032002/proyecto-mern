@@ -65,7 +65,12 @@ export const CarritoSlices = createSlice({
       localStorage.setItem("productos", JSON.stringify(state));
       return resp;
     },
+    vaciarCart2: (state) => {
+      const resp = (state = []);
+      localStorage.setItem("productos", JSON.stringify(state));
+      return resp;
+    },
   },
 });
 
-export const { addToCart, decrementar, vaciarCart } = CarritoSlices.actions;
+export const { addToCart, decrementar, vaciarCart, vaciarCart2 } = CarritoSlices.actions;

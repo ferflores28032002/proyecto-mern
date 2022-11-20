@@ -18,3 +18,5 @@ export { default as ButtonCerrarSesion } from "./ButtonCerrarSesion";
 export { default as CardProduct } from "./CardProduct";
 export { default as SearchProduct } from "./SearchProduct";
 export { default as Modal } from "./Modal";
+export { default as EmailPassword } from "./EmailPassword";
+export { default as UserPassword } from "./UserPassword";

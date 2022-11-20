@@ -27,7 +27,7 @@ export const useRoles = () => {
 
 
             if(data.status === 200){
-                Swal.fire("Creado exitosamente", "Creado", "success")
+                Swal.fire("¡Rol Creado exitosamente!", `${name} creado con exito`, "success")
             }
             loadroles()
 
@@ -43,7 +43,7 @@ export const useRoles = () => {
             const data = await sistemaApi.delete(`/roles/${id}`)
 
             if(data.status === 200){
-                Swal.fire("Rol eliminado correctamente", "Eliminado", "success")
+                Swal.fire("¡Rol eliminado correctamente!", "Eliminado", "success")
             }
             loadroles()
 
@@ -58,7 +58,7 @@ export const useRoles = () => {
             const data = await sistemaApi.put(`/roles/${id}`, { name, description })
 
             if(data.status === 200){
-                Swal.fire("Editado exitosamente", "Creado", "success")
+                Swal.fire("¡Editado exitosamente!", "rol editado con exito", "success")
             }
             loadroles()
 

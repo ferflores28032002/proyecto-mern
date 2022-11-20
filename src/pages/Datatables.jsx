@@ -28,7 +28,7 @@ const Datatables = ({ columns, data }) => {
           <div>
             <input
               type="text"
-              className="w-full placeholder:text-sm placeholder:text-white text-white border-1 outline-none bg-indigo-400 mb-4 px-4 py-2 rounded "
+              className="w-full placeholder:text-sm placeholder:text-white text-white border-1 outline-none border-none bg-indigo-400 mb-4 px-4 py-2 rounded "
               placeholder="Has tu busqueda.."
               value={search}
               onChange={(e) => setsearch(e.target.value)}

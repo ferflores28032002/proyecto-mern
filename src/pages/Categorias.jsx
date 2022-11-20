@@ -7,6 +7,9 @@ import { Header, Modal } from "../components";
 import { useCategorias, useForms } from "../hooks/";
 import Datatables from "./Datatables";
 import { Iconos } from "../helpers/Iconos";
+import { CgMenuGridR, CgPlayPauseR } from "react-icons/cg";
+import { AiOutlineBook } from "react-icons/ai";
+import { CiSaveDown2 } from "react-icons/ci";
 
 
 
@@ -88,6 +91,7 @@ const Categorias = () => {
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
         onClick={() => setcloseModal(!closeModal)}
       >
+        <CgMenuGridR/>
         Agregar
       </button>
 
@@ -95,52 +99,102 @@ const Categorias = () => {
         closeModal={closeModal}
         setcloseModal={setcloseModal}
         titulo="Agregar nueva Categoria"
+        info="Categorias"
+        icono={<CgPlayPauseR/>}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            className="w-full placeholder:text-sm  border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
-            placeholder="Nombres"
-            {...register("name")}
-          />
-          <input
-            type="text"
-            className="w-full placeholder:text-sm  border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
-            placeholder="description"
-            {...register("description")}
-          />
+                
+            <div className="relative mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="Nombre"
+                {...register("name",{
+                  required:true
+                })}
+              />
 
-          <div>
-            <button>Crear Categoria</button>
-          </div>
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <CgPlayPauseR className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div>
+          
+
+            <div className="relative mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="Descripción"
+                {...register("description",{
+                  required:true
+                })}
+              />
+
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <AiOutlineBook className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div>
+
+            <div className="block mt-3">
+              <button
+                className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center"
+              >
+                <CiSaveDown2 size={25}/>
+                Crear Categoria</button>
+            </div>
         </form>
       </Modal>
 
 
 
       
-      <Modal closeModal={closeModal2} setcloseModal={setcloseModal2} titulo="Agregar nueva Categoria" >
+      <Modal 
+        closeModal={closeModal2} 
+        setcloseModal={setcloseModal2} 
+        titulo="Editar Categoria"
+        info="Categorias"
+        icono={<CgPlayPauseR/>}
+        
+        >
         <form onSubmit={editarCategoria}>
-          <input
-            type="text"
-            className="w-full placeholder:text-sm  border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
-            placeholder="Nombres"
-            name="name"
-            onChange={onInputChange}
-            value={name}
-          />
-          <input
-            type="text"
-            className="w-full placeholder:text-sm  border-1 outline-none bg-indigo-100 mb-4 px-4 py-2 rounded focus:border-2"
-            placeholder="description"
-            name="description"
-            onChange={onInputChange}
-            value={description}
-          />
+        <div className="relative mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="Nombre"
+                name="name"
+                onChange={onInputChange}
+                value={name}
+              />
 
-          <div>
-            <button>Editar Categoria</button>
-          </div>
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <CgPlayPauseR className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div>
+          
+
+            <div className="relative mt-2 rounded shadow-sm">
+              <input
+                type="text"
+                className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
+                placeholder="Descripción"
+                name="description"
+                onChange={onInputChange}
+                value={description}
+              />
+
+              <div className="absolute inset-y-0 left-0 flex items-center">
+                <AiOutlineBook className="h-4 w-4 mx-3 text-blue-500 " />
+              </div>
+            </div>
+
+            <div className="block mt-3">
+              <button
+                className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center"
+              >
+                <CiSaveDown2 size={25}/>
+                Editar Categoria</button>
+            </div>
         </form>
       </Modal>
 

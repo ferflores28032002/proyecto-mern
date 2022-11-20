@@ -28,7 +28,7 @@ export const useEmpleados = () => {
             const data = await sistemaApi.post("/empleados", { name, surnames, age, telephone, salary, direction, sex, idCargo: parseInt(idCargo) })
 
             if(data.status === 200){
-                Swal.fire("Agregado Correctamente", `Empleado ${name} Agregado`, "success")
+                Swal.fire("¡Agregado Correctamente!", `${name} ha sido Agregado con exito`, "success")
             }
             loadempleados()
 
