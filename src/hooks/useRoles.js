@@ -12,7 +12,7 @@ export const useRoles = () => {
         try {
             const { data } = await sistemaApi.get("/roles")
             setroles(data.data)
-            console.log(data.data)
+          
 
         } catch (error) {
             console.log(error)

@@ -12,7 +12,7 @@ export const useCategorias = () => {
         try {
             const { data } = await sistemaApi.get("/categories")
             setcategorias(data.data)
-            console.log(data.data)
+            
 
         } catch (error) {
             console.log(error)
@@ -62,7 +62,7 @@ export const useCategorias = () => {
             const data = await sistemaApi.put(`/categories/${id}`, {name, description})
 
             if(data.status === 200) {
-                Swal.fire("Categoria actuelizada", "actuelizada", "success")
+                Swal.fire("Categoria actualizada", "actualizada", "success")
             }
 
             loadcategorias()

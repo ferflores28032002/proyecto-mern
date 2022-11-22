@@ -4,7 +4,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { CgPassword } from "react-icons/cg";
 import Swal from "sweetalert2";
 import { useUsuarios } from "../hooks/useUsuarios";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 const UserPassword = () => {
 
@@ -35,10 +35,15 @@ const UserPassword = () => {
     reset();
   };
 
+
+  if(!id) {
+    return <Navigate to="/login" />
+  }
+
   return (
     <div className="w-full min-h-screen bg-[#695cfe] flex justify-center items-center">
       <div className="max-w-md mx-2 py-8 p-10 shadow-2xl rounded bg-white">
-        <img src={password_login} alt="logo de la empresa" />
+        <img src={password_login} alt="logo de la empresa" className="min-h-[12rem]" />
 
         <form className="mt-8" onSubmit={handleSubmit(LoginData)}>
           <div className="relative mt-2 rounded shadow-sm">

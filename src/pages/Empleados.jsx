@@ -4,8 +4,7 @@ import Modal from "../components/Modal";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { useForm } from "react-hook-form";
 import { useCargos, useEmpleados, useForms } from "../hooks/";
-import { MdDelete } from "react-icons/md";
-import { AiTwotoneEdit } from "react-icons/ai";
+import { MdDelete, MdModeEditOutline } from "react-icons/md";
 import sistemaApi from "../Api/sistemaApi";
 import { Iconos } from "../helpers/Iconos";
 import Header from "../components/Header";
@@ -46,13 +45,13 @@ const Empleados = () => {
             className="p-1 rounded-lg bg-red-500"
             onClick={() => deleteEmpleados(row.id)}
           >
-            <MdDelete size={25} className="text-white" />
+            <MdDelete size={23} className="text-white" />
           </button>
           <button
             className="p-1 rounded-lg bg-blue-600"
             onClick={() => editar(row.id)}
           >
-            <AiTwotoneEdit className="text-white" size={25} />
+            <MdModeEditOutline className="text-white" size={23} />
           </button>
         </div>
       ),
@@ -61,7 +60,7 @@ const Empleados = () => {
 
   const [closeModal, setcloseModal] = useState(false);
   const [closeModal2, setcloseModal2] = useState(false);
-  const { handleSubmit, register, reset, } = useForm();
+  const { handleSubmit, register, reset } = useForm();
   const {
     empleados,
     loadempleados,
@@ -93,7 +92,15 @@ const Empleados = () => {
     sex: "",
     idCargo: "",
   });
-  const { FaUserTie, RiUserStarFill,FaChild,BsFillPhoneFill, MdAttachMoney,SlDirections ,CiSaveDown2} = Iconos();
+  const {
+    FaUserTie,
+    RiUserStarFill,
+    FaChild,
+    BsFillPhoneFill,
+    MdAttachMoney,
+    SlDirections,
+    CiSaveDown2,
+  } = Iconos();
 
   useEffect(() => {
     loadempleados();
@@ -103,7 +110,7 @@ const Empleados = () => {
   // Datos del formulario
   const onSubmit = (data) => {
     addEmpleados(data);
-    reset()
+    reset();
   };
 
   const editar = async (id) => {
@@ -120,8 +127,7 @@ const Empleados = () => {
 
   return (
     <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
-
-      <Header title="Empleados" icono={<FaUserTie/>}/>
+      <Header title="Empleados" icono={<FaUserTie />} />
 
       <button
         className="py-2 px-6 flex gap-2 items-center rounded-sm text-white bg-indigo-400"
@@ -140,16 +146,14 @@ const Empleados = () => {
         info="Empleado"
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-
           <div>
-
             <div className="relative mt-2 rounded shadow-sm">
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Nombres"
                 {...register("name", {
-                  required: true
+                  required: true,
                 })}
               />
 
@@ -163,8 +167,8 @@ const Empleados = () => {
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Apellidos"
-                {...register("surnames",{
-                  required: true
+                {...register("surnames", {
+                  required: true,
                 })}
               />
 
@@ -173,98 +177,85 @@ const Empleados = () => {
               </div>
             </div>
 
-
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Edad "
-                {...register("age",{
-                  required:true
+                {...register("age", {
+                  required: true,
                 })}
               />
 
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <FaChild className="h-4 w-4 mx-3 text-yellow-500 " />
               </div>
-
             </div>
-            
+
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="tel"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Telefono"
-                {...register("telephone",{
-                  required: true
+                {...register("telephone", {
+                  required: true,
                 })}
               />
 
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <BsFillPhoneFill className="h-4 w-4 mx-3 text-purple-600 " />
               </div>
-
             </div>
 
-
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Salario"
-                {...register("salary",{
-                  required: true
+                {...register("salary", {
+                  required: true,
                 })}
               />
 
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <MdAttachMoney className="h-4 w-4 mx-3 text-green-700 " />
               </div>
-
             </div>
 
-            
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
                 placeholder="Dirección"
-                {...register("direction",{
-                  required:true
+                {...register("direction", {
+                  required: true,
                 })}
               />
 
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <SlDirections className="h-4 w-4 mx-3 text-red-400 " />
               </div>
-
             </div>
 
-
-            <select {...register("idCargo",{required: true})}   
+            <select
+              {...register("idCargo", { required: true })}
               className="border-indigo-300 text-gray-500 border w-full py-2 px-4 mt-2 focus:border-indigo-100 rounded outline-none bg-indigo-50 col-span-2"
             >
               {cargos.map((cargo) => (
-                <option
-                  key={cargo.id} value={cargo.id}>
+                <option key={cargo.id} value={cargo.id}>
                   {cargo.name}
                 </option>
               ))}
             </select>
 
-
-            <div  className="flex w-full py-4 items-center text-gray-500 justify-start gap-6">
+            <div className="flex w-full py-4 items-center text-gray-500 justify-start gap-6">
               <div className="flex gap-2 items-center">
                 <input
                   id="mas"
                   type="radio"
                   value="Masculino"
-                  {...register("sex",{
-                    required:true
+                  {...register("sex", {
+                    required: true,
                   })}
                 />
                 <label htmlFor="mas">Masculino</label>
@@ -274,18 +265,17 @@ const Empleados = () => {
                   id="fem"
                   type="radio"
                   value="Femenino"
-                  {...register("sex", {required:true})}
+                  {...register("sex", { required: true })}
                 />
                 <label htmlFor="fem">Femenino</label>
               </div>
             </div>
 
             <div className="block mt-3 col-span-2">
-              <button
-                className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center"
-              >
-                <CiSaveDown2 size={25}/>
-                Crear Empleado</button>
+              <button className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center">
+                <CiSaveDown2 size={25} />
+                Crear Empleado
+              </button>
             </div>
           </div>
         </form>
@@ -298,12 +288,10 @@ const Empleados = () => {
         info="Empleado"
         color="#fff"
         bac="#facc15"
-        icono={<FaUserEdit/>}
+        icono={<FaUserEdit />}
       >
         <form onSubmit={editarEmpleado}>
-
           <div>
-
             <div className="relative mt-2 rounded shadow-sm">
               <input
                 type="text"
@@ -334,9 +322,7 @@ const Empleados = () => {
               </div>
             </div>
 
-
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
@@ -349,11 +335,9 @@ const Empleados = () => {
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <FaChild className="h-4 w-4 mx-3 text-yellow-500 " />
               </div>
-
             </div>
-            
+
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="tel"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
@@ -366,12 +350,9 @@ const Empleados = () => {
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <BsFillPhoneFill className="h-4 w-4 mx-3 text-purple-600 " />
               </div>
-
             </div>
 
-
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
@@ -384,12 +365,9 @@ const Empleados = () => {
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <MdAttachMoney className="h-4 w-4 mx-3 text-green-700 " />
               </div>
-
             </div>
 
-            
             <div className="relative mt-2 rounded shadow-sm">
-        
               <input
                 type="text"
                 className="border bg-indigo-50 text-gray-500 border-indigo-200 rounded py-2 pr-3 pl-10 w-full focus:border-indigo-100 outline-none"
@@ -402,23 +380,22 @@ const Empleados = () => {
               <div className="absolute inset-y-0 left-0 flex items-center">
                 <SlDirections className="h-4 w-4 mx-3 text-red-400 " />
               </div>
-
             </div>
 
-
-            <select name="idCargo" onChange={onInputChange} value={idCargo}   
+            <select
+              name="idCargo"
+              onChange={onInputChange}
+              value={idCargo}
               className="border-indigo-300 text-gray-500 border w-full py-2 px-4 mt-2 focus:border-indigo-100 rounded outline-none bg-indigo-50 col-span-2"
             >
               {cargos.map((cargo) => (
-                <option
-                  key={cargo.id} value={cargo.id}>
+                <option key={cargo.id} value={cargo.id}>
                   {cargo.name}
                 </option>
               ))}
             </select>
 
-
-            <div  className="flex w-full py-4 items-center text-gray-500 justify-start gap-6">
+            <div className="flex w-full py-4 items-center text-gray-500 justify-start gap-6">
               <div className="flex gap-2 items-center">
                 <input
                   id="mas"
@@ -442,11 +419,10 @@ const Empleados = () => {
             </div>
 
             <div className="block mt-3 col-span-2">
-              <button
-                className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center"
-              >
-                <CiSaveDown2 size={25}/>
-                Editar Empleado</button>
+              <button className="w-full py-2 bg-blue-600 text-center text-white rounded font-semibold hover:bg-blue-800 flex items-center gap-3 justify-center">
+                <CiSaveDown2 size={25} />
+                Editar Empleado
+              </button>
             </div>
           </div>
         </form>

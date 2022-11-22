@@ -1,22 +1,18 @@
 import React, { useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { FiShoppingCart } from "react-icons/fi";
-import { BsChatLeft } from "react-icons/bs";
-import { RiNotification3Line } from "react-icons/ri";
+import { FiShoppingBag, FiShoppingCart } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 import { useSelector } from "react-redux";
-import { FaUserAlt } from "react-icons/fa";
-import { GrCompliance } from "react-icons/gr";
-import { Link } from "react-router-dom";
+
 import { BiUser } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
-      type="button"
       onClick={() => customFunc()}
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
@@ -73,32 +69,27 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
       <div className="flex">
-        {/* <NavButton
-          title="Cart"
-          customFunc={() => handleClick("cart")}
-          color={currentColor}
-          icon={<GrCompliance />}
-        /> */}
-
         <button
           onClick={() => handleClick("cart")}
           className="p-2 flex items-center relative mr-2"
         >
-          <button className="text-blue-900">
+          <div className="text-blue-900">
             <FiShoppingCart size={20} />
-          </button>
+          </div>
           <span className="absolute flex items-center justify-center text-[0.8rem] h-6 w-6 top-0 -right-2 rounded-full bg-purple-500 p-1 text-white">
             {cart.length}
           </span>
         </button>
 
-        {/* <NavButton
-          title="Chat"
-          dotColor="#03C9D7"
-          customFunc={() => handleClick("chat")}
-          color={currentColor}
-          icon={<BsChatLeft />}
-        /> */}
+        <Link to="/cart" className="p-2 flex items-center relative mr-2">
+          <div className="text-blue-900">
+            <FiShoppingBag size={20} />
+          </div>
+          <span className="absolute flex items-center justify-center text-[0.8rem] h-6 w-6 top-0 -right-2 rounded-full bg-yellow-500 p-1 text-white">
+            {cart.length}
+          </span>
+        </Link>
+
         <NavButton
           title="usuarios"
           dotColor="rgb(254, 201, 15)"

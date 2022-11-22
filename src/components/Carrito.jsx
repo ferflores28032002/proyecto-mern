@@ -3,14 +3,19 @@ import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useStateContext } from "../contexts/ContextProvider";
 import { Button } from ".";
-import { decrementar, addToCart, vaciarCart } from "../store/slices/CarritoSlices";
+import {
+  decrementar,
+  addToCart,
+  vaciarCart,
+} from "../store/slices/CarritoSlices";
 import { useDispatch, useSelector } from "react-redux";
 import { useVentas } from "../hooks/useVentas";
 import { UseSliceAuth } from "../store/hooks/UseSliceAuth";
 import ButtonCerrarSesion from "./ButtonCerrarSesion";
 import Swal from "sweetalert2";
+import { BsJournalBookmark } from "react-icons/bs";
 
-const Cart = () => {
+const Carrito = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const sutbTotal = cart.reduce(
@@ -30,35 +35,29 @@ const Cart = () => {
       );
     } else {
       addVentas({ monto: sutbTotal, idUserCreateVenta: user.data.id });
-      dispatch( vaciarCart() )
+      dispatch(vaciarCart());
     }
   };
 
   return (
-    <div className="bg-half-transparent w-full fixed nav-item top-0 right-0   ">
-      <div
-        className="float-right min-h-screen duration-1000 ease-in-out dark:text-gray-200 transition-all dark:bg-[#484B52] bg-white md:w-[32rem] p-8"
-        id="scroll"
-      >
-        <div className="flex justify-between items-center">
-          <p className="font-semibold text-lg">Carrito de compras</p>
-          <Button
-            icon={<MdOutlineCancel />}
-            color="rgb(153, 171, 180)"
-            bgHoverColor="light-gray"
-            size="2xl"
-            borderRadius="50%"
-          />
-        </div>
+    <div className="w-full px-14 py-4">
+      <div>
+        <ButtonCerrarSesion
+          color="white"
+          bgColor={currentColor}
+          text="Carrito de Compras"
+          borderRadius="10px"
+          width="full"
+        />
         {cart.length === 0 ? (
           <h1>El carrito esta vacio</h1>
         ) : (
-          cart.slice(0, 3)?.map((item, index) => (
+          cart?.map((item, index) => (
             <div key={index}>
               <div>
                 <div className="flex items-center   leading-8 gap-5 border-b-1 border-color dark:border-gray-600 p-4">
                   <img
-                    className="rounded-lg h-80 w-24"
+                    className="rounded-lg h-[8rem] w-48"
                     src={item.image_url}
                     alt="imagen-cart"
                   />
@@ -122,4 +121,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Carrito;

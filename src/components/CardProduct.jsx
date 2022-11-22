@@ -1,5 +1,6 @@
 import {IoEyeSharp} from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { addToCart } from '../store/slices/CarritoSlices'
 
 const CardProduct = ({producto}) => {
@@ -38,7 +39,7 @@ const CardProduct = ({producto}) => {
         </button>
 
 
-        <button className='bg-gray-300 py-2 px-3 rounded-lg'
+        <Link to={`/informacion/${producto.id}`} className='bg-gray-300 py-2 px-3 rounded-lg'
         >
 
         <IoEyeSharp
@@ -47,7 +48,7 @@ const CardProduct = ({producto}) => {
         />
         
 
-        </button>
+        </Link>
 
       </div>
 

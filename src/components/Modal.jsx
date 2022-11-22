@@ -89,7 +89,5 @@ const BottonCerrar = styled.button`
   color: #818cf8;
   font-weight: bold;
 
-  &:hover {
-    background: #f2f2f2;
-  }
+
 `;

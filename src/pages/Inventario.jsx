@@ -9,7 +9,7 @@ import {
 } from "../hooks/";
 import { UseSliceAuth } from "../store/hooks/UseSliceAuth";
 import Datatables from "./Datatables";
-import { MdDelete, MdOutlineInventory } from "react-icons/md";
+import { MdDelete, MdModeEditOutline, MdOutlineInventory } from "react-icons/md";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import { sistemaApi } from "../Api";
 import { Header } from "../components";
@@ -20,6 +20,8 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { CiSaveDown2 } from "react-icons/ci";
 import { CgShutterstock } from "react-icons/cg";
 import { Loading } from "../helpers/Loading";
+import { IoEyeSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Inventario = () => {
   const columns = [
@@ -51,14 +53,21 @@ const Inventario = () => {
             className="p-1 rounded-lg bg-red-500"
             onClick={() => deleteProductos(row.id)}
           >
-            <MdDelete size={20} className="text-white" />
+            <MdDelete size={23} className="text-white" />
           </button>
           <button
             className="p-1 rounded-lg bg-blue-600"
             onClick={() => editar(row.id)}
           >
-            <HiOutlinePencilAlt className="text-white" size={20} />
+            <MdModeEditOutline className="text-white" size={23} />
           </button>
+
+          <Link
+            to={`/informacion/${row.id}`}
+            className="bg-gray-300 p-1.5 rounded-lg"
+          >
+            <IoEyeSharp className="text-gray-700" size={22} />
+          </Link>
         </div>
       ),
     },
@@ -70,7 +79,7 @@ const Inventario = () => {
     addProductos,
     deleteProductos,
     editProducts,
-    loading
+    loading,
   } = useProductos();
   const [closeModal, setcloseModal] = useState(false);
   const [closeModal2, setcloseModal2] = useState(false);
@@ -117,10 +126,9 @@ const Inventario = () => {
     editProducts({ ...formState, image: e.target.image.files });
   };
 
-
-  if(loading) {
-    return <Loading/>
-  } 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="m-2  md:mx-10 p-2 md:px-10 bg-white rounded-3xl">
       <Header

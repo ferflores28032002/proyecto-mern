@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { FiSettings } from "react-icons/fi";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
+
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings, Cargos } from "./components";
+import {
+  Navbar,
+  Footer,
+  Sidebar,
+  ThemeSettings,
+  Cargos,
+  Carrito,
+} from "./components";
 import {
   Dashboard,
   Inventario,
@@ -25,6 +32,7 @@ import {
 import "./App.css";
 
 import { useStateContext } from "./contexts/ContextProvider";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const App = () => {
   const {
@@ -44,12 +52,15 @@ const App = () => {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
     }
-  }, [setCurrentColor,setCurrentMode ]);
+  }, [setCurrentColor, setCurrentMode]);
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
       <div className="flex relative dark:bg-main-dark-bg ">
-        <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
+        {/* <div
+          className="fixed right-4 bottom-4 opacity-0"
+          style={{ zIndex: "1000" }}
+        >
           <TooltipComponent content="Settings" position="Top">
             <button
               type="button"
@@ -60,7 +71,21 @@ const App = () => {
               <FiSettings />
             </button>
           </TooltipComponent>
+        </div> */}
+
+        <div className="fixed right-8 bottom-6 " style={{ zIndex: "1000" }}>
+          <TooltipComponent content="Nueva Venta" position="Top">
+            <Link to="/realizarventas">
+              <button
+                style={{ background: currentColor, borderRadius: "50%" }}
+                className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
+              >
+                <AiOutlinePlus />
+              </button>
+            </Link>
+          </TooltipComponent>
         </div>
+
         {activeMenu ? (
           <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
             <Sidebar />
@@ -97,8 +122,9 @@ const App = () => {
               <Route path="/Proveedores" element={<Proveedores />} />
               <Route path="/Ventas" element={<Ventas />} />
               <Route path="/Categorias" element={<Categorias />} />
-              <Route path="/Informacion" element={<Informacion />} />
+              <Route path="/Informacion/:id" element={<Informacion />} />
               <Route path="/realizarventas" element={<RealizarVenta />} />
+              <Route path="/cart" element={<Carrito />} />
 
               {/* charts  */}
               <Route path="/Password" element={<Password />} />

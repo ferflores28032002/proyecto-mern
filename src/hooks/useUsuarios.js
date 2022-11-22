@@ -139,16 +139,18 @@ export const useUsuarios = () => {
     const EnviarGmalNodemailer = async ({ email }) => {
         try {
 
-
+            setloading(true)
             const data = await sistemaApi.post("/email/password", {email})
+            setloading(false)
 
             if(data.status === 200) {
-                Swal.fire("Se le envio un correo para que modifique su contraseña", `Revise su correo`, "success")
+                Swal.fire("Enviado", `¡Se le envio un correo para que restablezca su contraseña!`, "success")
                 navigate("/login")
             }
 
         } catch (error) {
-            Swal.fire(error.response.data.msg, `No hay usuarios con ese email`, "warning")
+            setloading(false)
+            Swal.fire(error.response.data.msg, `Lo sentimos, ingrese correctamente el email`, "warning")
         }
     }
 

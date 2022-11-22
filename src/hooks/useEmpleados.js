@@ -13,7 +13,7 @@ export const useEmpleados = () => {
         try {
             const { data } = await sistemaApi.get("/empleados")
             setempleados(data.data)
-            console.log(data.data)
+    
 
         } catch (error) {
             console.log(error)

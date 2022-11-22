@@ -7,14 +7,13 @@ import Button from "./Button";
 import { FaUserTie } from "react-icons/fa";
 import { BsFillTelephoneForwardFill, BsShield } from "react-icons/bs";
 
-
 const UserProfile = () => {
   const { currentColor } = useStateContext();
   const { user } = useSelector((state) => state.auth);
   const { UserLogout } = UseSliceAuth();
 
   return (
-    <div className="nav-item absolute right-1 shadow-2xl top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
+    <div className="nav-item absolute right-1 shadow-2xl top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-[29rem]">
       <div className="flex justify-between items-center">
         <p className="font-semibold text-lg dark:text-gray-200">
           Perfil del usuario
@@ -36,7 +35,7 @@ const UserProfile = () => {
         <div>
           <p className="font-semibold text-xl dark:text-gray-200">
             {" "}
-            {user?.data.empleado.name}
+            {user?.data?.empleado?.name}
           </p>
           <p className="text-gray-500 text-sm dark:text-gray-400">
             {" "}
@@ -59,10 +58,10 @@ const UserProfile = () => {
           </button>
 
           <div>
-            <p className="font-semibold dark:text-gray-200 ">Mi Perfil</p>
+            <p className="font-semibold dark:text-gray-200 ">Nombres y Apellidos</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">
               {" "}
-              {user?.data?.empleado.name} &nbsp;
+              {user?.data?.empleado.name}&nbsp;
               {user?.data?.empleado.surnames}
             </p>
           </div>
@@ -81,7 +80,7 @@ const UserProfile = () => {
           </button>
 
           <div>
-            <p className="font-semibold dark:text-gray-200 ">Usuario</p>
+            <p className="font-semibold dark:text-gray-200 ">Nombre de usuario</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">
               {" "}
               {user?.data?.name}
@@ -102,7 +101,7 @@ const UserProfile = () => {
           </button>
 
           <div>
-            <p className="font-semibold dark:text-gray-200 ">Dirección</p>
+            <p className="font-semibold dark:text-gray-200 ">Número Telefonico</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">
               {" "}
               {user?.data?.empleado.telephone}

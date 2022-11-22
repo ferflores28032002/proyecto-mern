@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 
-const Datatables = ({ columns, data }) => {
+const Datatables = ({ columns, data, buscador }) => {
   const [search, setsearch] = useState("");
   const [filtrado, setfiltrado] = useState([]);
 
@@ -25,6 +25,10 @@ const Datatables = ({ columns, data }) => {
         fixedHeader
         responsive
         subHeaderComponent={
+
+          buscador ? <>
+          </>
+            :
           <div>
             <input
               type="text"

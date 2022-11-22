@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useCargos, useForms } from "../../hooks/";
 import Datatables from "../../pages/Datatables";
 import Modal from "../Modal";
-import { MdDelete } from "react-icons/md";
-import { HiOutlinePencilAlt, HiOutlineShieldCheck } from "react-icons/hi";
+import { MdDelete, MdModeEditOutline } from "react-icons/md";
+import { HiOutlineShieldCheck } from "react-icons/hi";
 import sistemaApi from "../../Api/sistemaApi";
 import Header from "../Header";
 import { FaUserShield } from "react-icons/fa";
@@ -35,13 +35,13 @@ const Cargos = () => {
             className="p-1 rounded-lg bg-red-500"
             onClick={() => deleteCargos(row.id)}
           >
-            <MdDelete size={25} className="text-white" />
+            <MdDelete size={23} className="text-white" />
           </button>
           <button
             className="p-1 rounded-lg bg-blue-600"
             onClick={() => editar(row.id)}
           >
-            <HiOutlinePencilAlt className="text-white" size={25} />
+            <MdModeEditOutline className="text-white" size={23} />
           </button>
         </div>
       ),

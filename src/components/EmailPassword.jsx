@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import emailLogo from "../assets/imagenes/email.svg";
 import { HiOutlineMail } from "react-icons/hi";
 import { useUsuarios } from "../hooks/useUsuarios";
+import { Loading } from "../helpers/Loading";
 
 const EmailPassword = () => {
   const {
@@ -11,7 +12,7 @@ const EmailPassword = () => {
     handleSubmit,
   } = useForm();
 
-  const { EnviarGmalNodemailer } = useUsuarios();
+  const { EnviarGmalNodemailer, loading } = useUsuarios();
 
   const LoginData = (data) => {
     EnviarGmalNodemailer(data);
@@ -19,10 +20,19 @@ const EmailPassword = () => {
     reset();
   };
 
+
+  
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="w-full min-h-screen bg-[#695cfe] flex justify-center items-center">
       <div className="max-w-md mx-2 py-8 p-10 shadow-2xl rounded bg-white">
-        <img src={emailLogo} className="h-72" alt="logo de la empresa" />
+        <img src={emailLogo} className="h-72" alt="logo de la empresa"
+        
+        
+        />
 
         <form className="mt-8" onSubmit={handleSubmit(LoginData)}>
           <div className="relative mt-2 rounded shadow-sm">

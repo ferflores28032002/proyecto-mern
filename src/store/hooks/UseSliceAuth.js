@@ -31,7 +31,7 @@ export const UseSliceAuth = () => {
       setTimeout(() => {
         dispatch(clearErrorMessage());
       }, 10);
-      console.log(error);
+
     }
   };
 

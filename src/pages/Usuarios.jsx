@@ -4,11 +4,10 @@ import Datatables from "./Datatables";
 import { FaUserFriends, FaUserPlus, FaUserTie } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useEmpleados, useForms, useRoles, useUsuarios } from "../hooks/";
-import { MdDelete, MdEmail } from "react-icons/md";
-import { HiOutlinePencilAlt } from "react-icons/hi";
+import { MdDelete, MdEmail, MdModeEditOutline } from "react-icons/md";
 import { sistemaApi } from "../Api";
 import { Header } from "../components";
-import { RiLockPasswordFill, RiLockPasswordLine } from "react-icons/ri";
+import { RiLockPasswordFill } from "react-icons/ri";
 import { CiSaveDown2 } from "react-icons/ci";
 import { Loading } from "../helpers/Loading";
 
@@ -47,13 +46,13 @@ const Usuarios = () => {
             className="p-1 rounded-lg bg-red-500"
             onClick={() => deleteUsuarios(row.id)}
           >
-            <MdDelete size={20} className="text-white" />
+            <MdDelete size={23} className="text-white" />
           </button>
           <button
             className="p-1 rounded-lg bg-blue-600"
             onClick={() => editar(row.id)}
           >
-            <HiOutlinePencilAlt className="text-white" size={20} />
+            <MdModeEditOutline className="text-white" size={23} />
           </button>
         </div>
       ),
@@ -65,8 +64,14 @@ const Usuarios = () => {
   const { handleSubmit, register, reset } = useForm();
   const { roles, loadroles } = useRoles();
   const { empleados, loadempleados } = useEmpleados();
-  const { usuarios, loadusuarios, addUsuarios, deleteUsuarios, editUsuarios, loading } =
-    useUsuarios();
+  const {
+    usuarios,
+    loadusuarios,
+    addUsuarios,
+    deleteUsuarios,
+    editUsuarios,
+    loading,
+  } = useUsuarios();
   const {
     onInputChange,
     onResetForm,
@@ -109,9 +114,8 @@ const Usuarios = () => {
     editUsuarios({ ...formState, image: e.target.image.files });
   };
 
-
-  if(loading) {
-    return <Loading/>
+  if (loading) {
+    return <Loading />;
   }
 
   return (

@@ -550,10 +550,10 @@ export const links = [
         name: "Ventas",
         icon: <FiEdit size={25} />,
       },
-      {
-        name: "Informacion",
-        icon: <CgProfile size={25} />,
-      },
+      // {
+      //   name: "Informacion",
+      //   icon: <CgProfile size={25} />,
+      // },
     ],
   },
   {
@@ -568,30 +568,30 @@ export const links = [
         icon: <FaShieldAlt size={25} />,
       },
 
-      {
-        name: "Permisos",
-        icon: <AiOutlineBarChart size={25} />,
-      },
+      // {
+      //   name: "Permisos",
+      //   icon: <AiOutlineBarChart size={25} />,
+      // },
       {
         name: "Cargos",
         icon: <FiPieChart size={25} />,
       },
-      {
-        name: "financial",
-        icon: <RiStockLine size={25} />,
-      },
-      {
-        name: "color-mapping",
-        icon: <BsBarChart size={25} />,
-      },
-      {
-        name: "pyramid",
-        icon: <GiLouvrePyramid size={25} />,
-      },
-      {
-        name: "stacked",
-        icon: <AiOutlineBarChart size={25} />,
-      },
+      // {
+      //   name: "financial",
+      //   icon: <RiStockLine size={25} />,
+      // },
+      // {
+      //   name: "color-mapping",
+      //   icon: <BsBarChart size={25} />,
+      // },
+      // {
+      //   name: "pyramid",
+      //   icon: <GiLouvrePyramid size={25} />,
+      // },
+      // {
+      //   name: "stacked",
+      //   icon: <AiOutlineBarChart size={25} />,
+      // },
     ],
   },
 ];

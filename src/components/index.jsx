@@ -20,3 +20,4 @@ export { default as SearchProduct } from "./SearchProduct";
 export { default as Modal } from "./Modal";
 export { default as EmailPassword } from "./EmailPassword";
 export { default as UserPassword } from "./UserPassword";
+export { default as Carrito } from "./Carrito";

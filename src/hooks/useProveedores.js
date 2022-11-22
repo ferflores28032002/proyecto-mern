@@ -12,7 +12,7 @@ export const useProveedores = () => {
         try {
             const { data } = await sistemaApi.get("/proveedores")
             setproveedores(data.data)
-            console.log(data.data)
+          
 
         } catch (error) {
             console.log(error)
@@ -27,7 +27,7 @@ export const useProveedores = () => {
             const data = await sistemaApi.post("/proveedores", { name })
 
             if(data.status === 200){
-                Swal.fire("Agregado", "proveedor agregada", "success")
+                Swal.fire("¡Proveedor Agregado correctamente!", "Agregado con exito", "success")
             }
             loadproveedores()
 
@@ -42,7 +42,7 @@ export const useProveedores = () => {
             const data = await sistemaApi.delete(`/proveedores/${id}`)
 
             if(data.status === 200) {
-                Swal.fire("Eliminado", "elimiinado coreectamente", "success")
+                Swal.fire("Eliminado correctamente", "El proveedor ha sido eliminado", "success")
             }
             loadproveedores()
 
